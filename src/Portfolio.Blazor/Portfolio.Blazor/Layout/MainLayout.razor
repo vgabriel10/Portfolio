@@ -1,0 +1,65 @@
+﻿@inherits LayoutComponentBase
+
+<div class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="">Portfolio.Blazor</a>
+
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="@NavMenuCssClass navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">Home</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="sobre">Sobre mim</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="projetos">Projetos</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="experiencias">Experiências</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="contato">Contato</NavLink>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container mt-4">
+    @Body
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : "show";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
+
+
+@* Menu padrão quando cria uma aplicação em Blazor *@
+
+@* @inherits LayoutComponentBase
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+ *@
