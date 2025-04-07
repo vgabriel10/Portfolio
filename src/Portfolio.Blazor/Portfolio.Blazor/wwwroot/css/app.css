@@ -101,3 +101,60 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.titulo {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.container-projetos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px;
+}
+
+.card-projeto {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+    .card-projeto:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+    }
+
+    .card-projeto img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .card-projeto h3 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+
+    .card-projeto p {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+    }
+
+.tecnologias {
+    font-style: italic;
+    color: #ccc;
+}

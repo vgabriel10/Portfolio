@@ -1,7 +1,56 @@
-﻿@page "/projetos"
+﻿@* @page "/projetos"
 
 <h2>Projetos</h2>
 <ul>
     <li><strong>PaperCapture:</strong> Sistema de captura de documentos com exportação e monitoramento.</li>
     <li><strong>API de Avaliação:</strong> API REST para avaliação de produtos com tratamento de erros estruturado.</li>
-</ul>
+</ul> *@
+
+
+ @page "/projetos"
+
+<h2 class="titulo">Projetos</h2>
+
+<div class="container-projetos">
+    @foreach (var projeto in ListaProjetos)
+    {
+        <div class="card-projeto">
+            <h3>@projeto.Titulo</h3>
+            <img src="@projeto.ImagemUrl" alt="@projeto.Titulo" />
+            <p>@projeto.Descricao</p>
+            <p class="tecnologias">@projeto.Tecnologias</p>
+        </div>
+    }
+</div>
+
+@code {
+    public class Projeto
+    {
+        public string Titulo { get; set; }
+        public string ImagemUrl { get; set; }
+        public string Descricao { get; set; }
+        public string Tecnologias { get; set; }
+    }
+
+    List<Projeto> ListaProjetos = new()
+    {
+        new Projeto {
+            Titulo = "Orange Evolution",
+            ImagemUrl = "images/orange-evolution.png",
+            Descricao = "Plataforma de estudos desenvolvida na Hackathon do Programa de Formação 4 da FCamara.",
+            Tecnologias = "C# – Blazor – SQL"
+        },
+        new Projeto {
+            Titulo = "Desafio 21 dias de código",
+            ImagemUrl = "images/21dias.png",
+            Descricao = "Desafio promovido pela Rocketseat com 21 projetos diferentes.",
+            Tecnologias = "HTML – CSS – JS"
+        },
+        new Projeto {
+            Titulo = "Nutricionista Roberto – Links",
+            ImagemUrl = "images/roberto.png",
+            Descricao = "Páginas de links desenvolvidas para cliente.",
+            Tecnologias = "HTML – CSS – JS"
+        }
+    };
+}
