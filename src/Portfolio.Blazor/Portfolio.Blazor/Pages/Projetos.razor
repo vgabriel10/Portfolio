@@ -14,43 +14,79 @@
 <div class="container-projetos">
     @foreach (var projeto in ListaProjetos)
     {
-        <div class="card-projeto">
-            <h3>@projeto.Titulo</h3>
-            <img src="@projeto.ImagemUrl" alt="@projeto.Titulo" />
-            <p>@projeto.Descricao</p>
-            <p class="tecnologias">@projeto.Tecnologias</p>
+        @* <div class="card-projeto" @onclick="() => Teste(projeto.LinkGitHub)"> *@
+        <div class="card-projeto" onclick="AbrirGitHub('@projeto.LinkGitHub')">
+            <div class="conteudo-projeto">
+                <h3>@projeto.Titulo</h3>
+                @* <img src="@projeto.ImagemUrl" alt="@projeto.Titulo" /> *@
+                <img src="/Assets/tela-home-sistema-estacionamento.png" alt="@projeto.Titulo" />
+                @* <p>@projeto.Descricao</p> *@
+                <p>
+                    @(projeto.Descricao?.Length > 300
+                                ? projeto.Descricao.Substring(0, 300) + "..."
+                                : projeto.Descricao.PadRight(300))
+                </p>
+                <p class="tecnologias">@projeto.Tecnologias</p>
+            </div>
+            <button class="btn-primary">Detalhes</button>
         </div>
     }
 </div>
 
+<script>
+        function AbrirGitHub(url) {
+        window.open(url, '_blank');
+    }
+</script>
+
 @code {
+
+    [Inject]
+    public NavigationManager NavigationManager { get; set; } = null!;
+
     public class Projeto
     {
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public string ImagemUrl { get; set; }
         public string Descricao { get; set; }
         public string Tecnologias { get; set; }
+        public string LinkGitHub { get; set; }
     }
 
     List<Projeto> ListaProjetos = new()
     {
-        new Projeto {
-            Titulo = "Orange Evolution",
-            ImagemUrl = "images/orange-evolution.png",
-            Descricao = "Plataforma de estudos desenvolvida na Hackathon do Programa de Formação 4 da FCamara.",
-            Tecnologias = "C# – Blazor – SQL"
+        new Projeto 
+        {
+            Id = 1,
+            Titulo = "Sistema de estacionamento",
+            ImagemUrl = "/Assets/tela-home-sistema-estacionamento.png",
+            Descricao = "Sistema web para gerenciamento de um estacionamento, com funcionalidades de adicionar e entrada e saída de veículos, gerenciar preços dos dias, gerar relatório de faturamento",
+            Tecnologias = "C# – ASP NET MVC – SQL Server - JQuery - Bootstrap",
+            LinkGitHub = "https://github.com/vgabriel10/SistemaDeEstacionamento"
         },
-        new Projeto {
-            Titulo = "Desafio 21 dias de código",
+        new Projeto 
+        {
+            Id = 2,
+            Titulo = "API de avaliação de produtos",
             ImagemUrl = "images/21dias.png",
             Descricao = "Desafio promovido pela Rocketseat com 21 projetos diferentes.",
-            Tecnologias = "HTML – CSS – JS"
+            Tecnologias = "HTML – CSS – JS",
+            LinkGitHub = ""
         },
         new Projeto {
+            Id = 3,
             Titulo = "Nutricionista Roberto – Links",
             ImagemUrl = "images/roberto.png",
             Descricao = "Páginas de links desenvolvidas para cliente.",
-            Tecnologias = "HTML – CSS – JS"
+            Tecnologias = "HTML – CSS – JS",
+            LinkGitHub = ""
         }
     };
+
+    public void Teste(string urlGitHub)
+    {
+        Console.WriteLine("testando");
+        NavigationManager.NavigateTo(urlGitHub);
+    }
 }

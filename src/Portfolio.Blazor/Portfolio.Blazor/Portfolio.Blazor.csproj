@@ -17,4 +17,14 @@
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Assets\tela-geracao-relatorio-sistema-estacionamento.png" />
+    <None Include="wwwroot\Assets\tela-home-sistema-estacionamento.png" />
+    <None Include="wwwroot\Assets\tela-registrar-saida.png" />
+  </ItemGroup>
+
 </Project>
